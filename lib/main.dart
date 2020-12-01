@@ -17,18 +17,28 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyFirstWidget extends StatelessWidget {
+class MyFirstWidget extends StatefulWidget {
   final Color color;
 
   MyFirstWidget({this.color = Colors.red});
 
   @override
+  _MyFirstWidgetState createState() => _MyFirstWidgetState();
+}
+
+class _MyFirstWidgetState extends State<MyFirstWidget> {
+  int count = 0;
+
+  @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        width: 50,
-        height: 50,
-        color: color,
+      child: FlatButton(
+        child: Text("$count"),
+        onPressed: () {
+          setState(() {
+            count++;
+          });
+        },
       ),
     );
   }
